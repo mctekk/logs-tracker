@@ -15,7 +15,7 @@ trait TLogHandler
 	public static $logger;
 
 	/**
-	 * Common function to log, wrapper for comunicate with monolog 
+	 * Common function to log, wrapper for comunicate with monolog
 	 *
 	 * @param string $channel The loggin channel
 	 * @param string $message The log message
@@ -25,14 +25,23 @@ trait TLogHandler
 	 * @todo
 			- Add custom way for log location
 	 */
-    public function log($channel, $message, $level = Logger::DEBUG, array $context = [], HandlerInterface $handler = null)
+    public function log($message, $level = Logger::DEBUG, array $context = [])
+    {
+    	self::$logger->log($level, $message, $context);
+    }
+
+    /**
+     * Initialize the log manager using custom handler
+     *
+     * @param string $name The loggin channel
+     * @param  HandlerInterface $handler Handler to be user to save the log
+     * @return void
+     */
+    public static function listen($name, HandlerInterface $handler)
     {
     	if (null === self::$logger)
-    	{
-	        self::$logger = new Logger($channel);
- 			self::$logger->pushHandler((isset($handler))?$handler :(new StreamHandler(__DIR__ . '/../../../logs/app.log', $level)));
-    	}
+	        self::$logger = new Logger($name);
 
-    	self::$logger->log($level, $message, $context);
+ 		self::$logger->pushHandler($handler);
     }
 }
