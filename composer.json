@@ -1,0 +1,17 @@
+{
+    "name": "mctekk/logs-tracker",
+    "description": "SDK wrapper client for RESTful api",
+    "homepage": "https://github.com/mctekk/logs-tracker",
+    "require": {
+        "php": ">=5.5.0",
+        "monolog/monolog": "1.13.1"
+    },
+	"autoload": {
+		"classmap": [
+			"src/"
+		],
+		"psr-4": {
+			"": ""
+		}
+	}
+}
