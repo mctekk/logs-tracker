@@ -35,7 +35,7 @@ trait TLogHandler
      *
      * @param string $name The loggin channel
      * @param  HandlerInterface $handler Handler to be user to save the log
-     * @return void
+     * @return Called listener
      */
     public static function listen($name, HandlerInterface $handler)
     {
@@ -43,5 +43,7 @@ trait TLogHandler
 	        self::$logger = new Logger($name);
 
  		self::$logger->pushHandler($handler);
+
+ 		return new self;
     }
 }

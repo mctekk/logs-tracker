@@ -7,15 +7,21 @@ class QueryListener extends \Phalcon\Mvc\User\Plugin
     use \Tracker\Handler\TLogHandler;
 
     /**
-     * This is executed if the event triggered is 'beforeQuery'
+     * Execute when the event 'afterConnect' trigger
+     */
+    public function afterConnect()
+    {}
+
+    /**
+     * Execute when the event 'beforeQuery' trigger
      */
     public function beforeQuery($event, $connection)
     {
-        $this->log('DB', $connection->getSQLStatement(), Logger::INFO);
+        $this->log($connection->getRealSQLStatement(), Logger::INFO, $connection->getSQLVariables());
     }
 
     /**
-     * This is executed if the event triggered is 'afterQuery'
+     * Execute when the event 'afterQuery' trigger
      */
     public function afterQuery($event, $connection)
     {}
