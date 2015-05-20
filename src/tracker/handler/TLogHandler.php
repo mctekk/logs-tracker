@@ -25,8 +25,11 @@ trait TLogHandler
 	 * @todo
 			- Add custom way for log location
 	 */
-    public function log($message, $level = Logger::DEBUG, array $context = [])
+    public function log($message, $level = Logger::DEBUG, $context = [])
     {
+    	if (is_null($context))
+    		$context = [];
+
     	self::$logger->log($level, $message, $context);
     }
 

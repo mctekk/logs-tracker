@@ -17,7 +17,7 @@ class QueryListener extends \Phalcon\Mvc\User\Plugin
      */
     public function beforeQuery($event, $connection)
     {
-        $this->log($connection->getRealSQLStatement(), Logger::INFO, $connection->getSQLVariables());
+        $this->log($connection->getRealSQLStatement(), Logger::INFO, $connection->getErrorInfo());
     }
 
     /**
