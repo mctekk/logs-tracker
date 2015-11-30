@@ -22,8 +22,7 @@ trait TLogHandler
 	 * @param integer $level The level to log [optional]
 	 * @param array $context The log context
 	 * @return void
-	 * @todo
-			- Add custom way for log location
+	 * @todo Add custom way for log location
 	 */
     public function log($message, $level = Logger::DEBUG, array $context = [])
     {
